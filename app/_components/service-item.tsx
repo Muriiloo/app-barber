@@ -9,7 +9,7 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ service }: ServiceItemProps) => {
   return (
-    <Card className="mx-5">
+    <Card className="mx-2">
       <CardContent className="flex items-center gap-3 p-3">
         <div className="relative max-h-[110px] min-h-[110px] min-w-[110px] max-w-[110px]">
           <Image
