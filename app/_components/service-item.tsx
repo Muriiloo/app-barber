@@ -125,7 +125,6 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
       })
       await createBookig({
         serviceId: service.id,
-        userId: (data?.user as any).id,
         date: newDate,
       })
       handleBokkingOpenSheetChange()
