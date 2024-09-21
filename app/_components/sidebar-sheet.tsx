@@ -6,21 +6,14 @@ import { CalendarDaysIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/search"
 import Link from "next/link"
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-  DialogDescription,
-  DialogHeader,
-} from "./ui/dialog"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
+import SignInDialog from "./sign-in-dialog"
 
 const Sidebar = () => {
   const { data } = useSession()
   const handleLogout = () => signOut()
-  const handleGoogleWithClick = () => signIn("google")
 
   return (
     <SheetContent>
@@ -49,27 +42,8 @@ const Sidebar = () => {
                   <LogInIcon />
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[80%] rounded-sm">
-                <DialogHeader>
-                  <DialogTitle>Faça o login na plataforma!</DialogTitle>
-                  <DialogDescription>
-                    Conecte-se usando uma conta Google!
-                  </DialogDescription>
-                </DialogHeader>
-
-                <Button
-                  variant="outline"
-                  className="gap-1"
-                  onClick={handleGoogleWithClick}
-                >
-                  <Image
-                    src="/google.svg"
-                    width={18}
-                    height={18}
-                    alt="google"
-                  />
-                  <p className="font-bold">Google</p>
-                </Button>
+              <DialogContent className="w-[90%]">
+                <SignInDialog />
               </DialogContent>
             </Dialog>
           </>
